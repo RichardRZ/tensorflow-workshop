@@ -49,33 +49,33 @@ h_conv1 = tf.nn.relu(conv2d(X_image, Wconv_1) + bconv_1)
 h_pool1 = max_pool_2x2(h_conv1)
 
 # Conv Filter 2 Variables
-Wconv_2 = tf.get_variable("WConv_2", shape=[FILTER_SIZE, FILTER_SIZE, FILTER_ONE_DEPTH, FILTER_TWO_DEPTH], 
+Wconv_2 = tf.get_variable("WConv_2", shape=[?, ?, ?, ?], 
                           initializer=initializer)
-bconv_2 = tf.get_variable("bConv_2", shape=[FILTER_TWO_DEPTH], initializer=initializer)
+bconv_2 = tf.get_variable("bConv_2", shape=[?], initializer=initializer)
 
 # Second Convolutional + Pooling Transformation
-h_conv2 = tf.nn.relu(conv2d(h_pool1, Wconv_2) + bconv_2)
-h_pool2 = max_pool_2x2(h_conv2)
+h_conv2 = tf.nn.relu(conv2d(?, ?) + ?)
+h_pool2 = max_pool_2x2(?)
 
 # Flatten Convolved Image, into vector for remaining feed-forward transformations
 h_pool2_flat = tf.reshape(h_pool2, [-1, FLAT_SIZE])
 
 # Hidden Layer Variables
-W_1 = tf.get_variable("W_1", shape=[FLAT_SIZE, HIDDEN_SIZE], initializer=initializer)
-b_1 = tf.get_variable("b_1", shape=[HIDDEN_SIZE], initializer=initializer)
+W_1 = tf.get_variable("W_1", shape=[?, ?], initializer=initializer)
+b_1 = tf.get_variable("b_1", shape=[?], initializer=initializer)
 
 # Hidden Layer Transformation
-hidden = tf.nn.relu(tf.matmul(h_pool2_flat, W_1) + b_1)
+hidden = tf.nn.relu(tf.matmul(?, ?) + ?)
 
 # DROPOUT - For regularization
 hidden_drop = tf.nn.dropout(hidden, keep_prob)
 
 # Output Layer Variables
-W_2 = tf.get_variable("W_2", shape=[HIDDEN_SIZE, OUTPUT_SIZE], initializer=initializer)
-b_2 = tf.get_variable("b_2", shape=[OUTPUT_SIZE], initializer=initializer)
+W_2 = tf.get_variable("W_2", shape=[?, ?], initializer=initializer)
+b_2 = tf.get_variable("b_2", shape=[?], initializer=initializer)
 
 # Output Layer Transformation
-output = tf.matmul(hidden_drop, W_2) + b_2
+output = tf.matmul(?, ?) + ?
 ###############################################################
 
 # Compute Loss

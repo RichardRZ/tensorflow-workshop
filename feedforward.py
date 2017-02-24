@@ -35,11 +35,11 @@ b_1 = tf.get_variable("Hidden_b", shape=[HIDDEN_SIZE], initializer=initializer)
 hidden = tf.nn.relu(tf.matmul(X, W_1) + b_1)
 
 # Output Layer Variables
-W_2 = tf.get_variable("Output_W", shape=[HIDDEN_SIZE, OUTPUT_SIZE], initializer=initializer)
-b_2 = tf.get_variable("Output_b", shape=[OUTPUT_SIZE], initializer=initializer)
+W_2 = tf.get_variable("Output_W", shape=[?, ?], initializer=initializer)
+b_2 = tf.get_variable("Output_b", shape=[?], initializer=initializer)
 
 # Output Layer Transformation
-output = tf.matmul(hidden, W_2) + b_2
+output = tf.matmul(?, ?) + ?
 ###############################################################
 
 # Compute Loss
