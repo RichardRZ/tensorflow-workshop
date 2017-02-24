@@ -29,6 +29,8 @@ The repository is structured in the following way:
 + recurrent.py - Contains the code skeleton for the last model described in the workshop - A Recurrent Neural Network (RNN) Language Model, for 
                  Language Modeling the Penn Treebank. 
 
++ MNIST_data/ - Contains the zipped MNIST train and test image files.
+
 + data/ - Contains the data files for the Recurrent Neural Network language model described above. This directory has the following subdirectories:
     - raw_data/ - Directory containing the raw train and test files. These are standard, pre-UNKed files from the Penn Treebank.
 
