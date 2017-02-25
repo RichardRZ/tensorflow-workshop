@@ -78,13 +78,11 @@ with tf.Session() as sess:
             counter +=1
     
     # Evaluate on Test Data
-    state, counter, sum_perplexity = sess.run(initial_state), 0, 0.0
+    state, counter, sum_cost = sess.run(initial_state), 0, 0.0
     for (start, end) in zip(range(0, len(testX), chunk), range(chunk, len(testX), chunk)):
         batch_x = testX[start:end].reshape([BATCH_SIZE, WINDOW_SIZE])
         batch_y = testY[start:end].reshape([BATCH_SIZE, WINDOW_SIZE])
-        perplexity, state = sess.run([perplexity, final_state], feed_dict={X: batch_x, 
-                                                                           Y: batch_y, 
-                                                                           initial_state: state, 
-                                                                           keep_prob: 1.0})
-        sum_perplexity, counter = sum_perplexity + perplexity, counter + 1
-    print "Test Perplexity: %.3f" % (sum_perplexity / counter)
+        cost, state = sess.run([loss, final_state], feed_dict={X: batch_x, Y: batch_y, 
+                                                               initial_state: state, keep_prob: 1.0})
+        sum_cost, counter = sum_cost + cost, counter + 1
+    print "Test Perplexity: %.3f" % np.exp(sum_cost / counter)
